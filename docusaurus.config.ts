@@ -11,7 +11,7 @@ const config: Config = {
   tagline: 'Sprinx Docs',
   favicon: 'img/favicon.ico',
   trailingSlash: false,
-  deploymentBranch: "main",
+  deploymentBranch: "gh-pages",
 
   // Set the production url of your site here
   url: 'https://docs.sprinx.xyz',

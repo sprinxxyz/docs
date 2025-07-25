@@ -79,7 +79,7 @@ const config: Config = {
     navbar: {
       title: 'Sprinx Docs',
       logo: {
-        alt: 'Kilo Code Logo',
+        alt: 'Sprinx Logo',
         src: 'img/logo.png',
         srcDark: 'img/logo.png',
         href: '/',

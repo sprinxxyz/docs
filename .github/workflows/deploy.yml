@@ -39,6 +39,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
         run: |
+          git config --global user.name "limalime"
+          git config --global user.email "lima@sprinx.xyz"
           git remote set-url origin https://${GIT_USER}:${GH_TOKEN}@github.com/sprinxxyz/docs.git
           npm run build
           npm run deploy

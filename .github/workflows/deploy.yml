@@ -35,9 +35,12 @@ jobs:
 
       - name: Build and Deploy
         env:
+          GIT_USER: limalime
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://${GIT_USER}:${GH_TOKEN}@github.com/sprinxxyz/docs.git
           npm run build
-          GIT_USER=limalime npm run deploy 
+          npm run deploy

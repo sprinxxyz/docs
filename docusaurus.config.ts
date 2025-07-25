@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  projectName: 'sprinxxyz.github.io',
+  projectName: 'docs',
   organizationName: 'sprinxxyz',
   title: 'Sprinx Documentation',
   tagline: 'Sprinx Docs',

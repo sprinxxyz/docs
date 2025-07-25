@@ -5,9 +5,12 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
+  projectName: 'sprinxxyz.github.io',
+  organizationName: 'sprinxxyz',
   title: 'Sprinx Documentation',
   tagline: 'Sprinx Docs',
   favicon: 'img/favicon.ico',
+  trailingSlash: false,
 
   // Set the production url of your site here
   url: 'https://docs.sprinx.xyz',

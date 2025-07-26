@@ -19,7 +19,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,14 +33,33 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build and Deploy
+      - name: Build project
         env:
-          GIT_USER: limalime
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          echo "🔧 Configure Git"
           git config --global user.name "limalime"
           git config --global user.email "lima@sprinx.xyz"
-          git remote set-url origin https://${GIT_USER}:${GH_TOKEN}@github.com/sprinxxyz/docs.git
-          npm run build
-          USE_SSH=false GIT_USER=${GIT_USER} npm run deploy
+
+          echo "📁 Clone gh-pages branch"
+          git clone --depth=1 --branch gh-pages https://x-access-token:${GH_TOKEN}@github.com/sprinxxyz/docs.git gh-pages
+
+          echo "🧹 Clean old content"
+          rm -rf gh-pages/*
+
+          echo "📦 Copy new build"
+          cp -r build/* gh-pages/
+
+          echo "📄 Add .nojekyll to prevent GitHub Pages from ignoring folders starting with _"
+          touch gh-pages/.nojekyll
+
+          echo "🚀 Commit and push"
+          cd gh-pages
+          git add .
+          git commit -m "Deploy website at $(date +'%Y-%m-%d %H:%M:%S')"
+          git push origin gh-pages

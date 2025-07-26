@@ -41,6 +41,6 @@ jobs:
         run: |
           git config --global user.name "limalime"
           git config --global user.email "lima@sprinx.xyz"
-          git remote set-url origin https://${GIT_USER}:${GH_TOKEN}@github.com/sprinxxyz/docs.git
+          git branch -m "gh-pages"
           npm run build
-          npm run deploy
+          USE_SSH=false GIT_USER=${GIT_USER} npm run deploy

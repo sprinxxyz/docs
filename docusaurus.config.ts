@@ -17,7 +17,7 @@ const config: Config = {
   url: 'https://docs.sprinx.xyz',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs',
+  baseUrl: '/',
 
   customFields: {
     freeTierAmount: process.env.FREE_TIER_AMOUNT || '$20',
